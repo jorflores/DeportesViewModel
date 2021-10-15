@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout-w900dp/activity_main.xml" value="0.22" />
         <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout/activity_main.xml" value="0.2638888888888889" />
-        <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout/fragment_basket_ball.xml" value="0.2638888888888889" />
-        <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout/fragment_soccer.xml" value="0.2638888888888889" />
+        <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout/fragment_basket_ball.xml" value="0.4466666666666667" />
+        <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout/fragment_soccer.xml" value="0.3333333333333333" />
         <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout/fragment_sport_selector.xml" value="0.2638888888888889" />
         <entry key="..\:/Playground/Kotlin_Proyects/DeportesViewModel/app/src/main/res/layout/fragment_sports_selector.xml" value="0.2638888888888889" />
       </map>

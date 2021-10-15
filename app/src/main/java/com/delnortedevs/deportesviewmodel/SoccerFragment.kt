@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.delnortedevs.deportesviewmodel.databinding.FragmentSoccerBinding
+import com.delnortedevs.sportkotlin.ScoreSoccerViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -14,6 +16,7 @@ private const val ARG_PARAM2 = "param2"
 
 private var _binding: FragmentSoccerBinding? = null
 private val binding get() = _binding!!
+private lateinit var viewModel : ScoreSoccerViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -40,9 +43,35 @@ class SoccerFragment : Fragment() {
 
         _binding  = FragmentSoccerBinding.inflate(inflater,container,false)
 
+       viewModel = ViewModelProvider(requireActivity()).get(ScoreSoccerViewModel::class.java)
+
+        showScores()
+
+        binding.teamA1.setOnClickListener{
+            viewModel.addScoreA(1)
+            binding.teamAScore.text = viewModel.scoreTeamA.toString()
+        }
+
+        binding.teamB1.setOnClickListener{
+            viewModel.addScoreB(1)
+            binding.teamBScore.text = viewModel.scoreTeamB.toString()
+        }
+
+        binding.teamReset.setOnClickListener{
+            viewModel.resetScores()
+            showScores()
+        }
+
+
         // Inflate the layout for this fragment
         return binding.root
     }
+
+    private fun showScores() {
+        binding.teamAScore.text = viewModel.scoreTeamA.toString()
+        binding.teamBScore.text = viewModel.scoreTeamB.toString()
+    }
+
 
     companion object {
         /**

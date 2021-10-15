@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.delnortedevs.deportesviewmodel.databinding.FragmentBasketBallBinding
+import com.delnortedevs.sportkotlin.ScoreBasketBallViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,6 +42,45 @@ class BasketBallFragment : Fragment() {
     ): View? {
 
         _binding  = FragmentBasketBallBinding.inflate(inflater,container,false)
+
+        val viewModel = ViewModelProvider(requireActivity()).get(ScoreBasketBallViewModel::class.java)
+
+        binding.teamAScore.text = viewModel.scoreTeamA.toString()
+        binding.teamBScore.text = viewModel.scoreTeamB.toString()
+
+        binding.teamA3.setOnClickListener{
+
+            viewModel.addScoreA(3)
+            binding.teamAScore.text = viewModel.scoreTeamA.toString()
+        }
+
+        binding.teamA2.setOnClickListener{
+
+            viewModel.addScoreA(2)
+            binding.teamAScore.text = viewModel.scoreTeamA.toString()
+        }
+
+        binding.teamA1.setOnClickListener{
+
+            viewModel.addScoreA(1)
+            binding.teamAScore.text = viewModel.scoreTeamA.toString()
+        }
+
+        binding.teamB3.setOnClickListener{
+            viewModel.addScoreB(3)
+            binding.teamBScore.text = viewModel.scoreTeamB.toString()
+        }
+
+        binding.teamB2.setOnClickListener{
+            viewModel.addScoreB(2)
+            binding.teamBScore.text = viewModel.scoreTeamB.toString()
+        }
+
+        binding.teamB1.setOnClickListener{
+            viewModel.addScoreB(1)
+            binding.teamBScore.text = viewModel.scoreTeamB.toString()
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }

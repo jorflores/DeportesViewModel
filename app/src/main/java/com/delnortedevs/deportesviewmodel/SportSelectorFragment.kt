@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.delnortedevs.deportesviewmodel.databinding.FragmentSportSelectorBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 
 private var _binding: FragmentSportSelectorBinding? = null
@@ -23,14 +24,13 @@ private val binding get() = _binding!!
  */
 class SportSelectorFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var modoTablet: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            modoTablet = it.getBoolean(ARG_PARAM1)
+
         }
     }
 
@@ -40,6 +40,24 @@ class SportSelectorFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSportSelectorBinding.inflate(inflater, container, false)
+
+        binding.imageViewSoccer.setOnClickListener{
+
+            if (modoTablet) {
+                (activity as MainActivity).openSoccerFragment()
+            }
+            else
+                findNavController().navigate(R.id.action_sportSelectorFragment3_to_soccerFragment)
+        }
+
+        binding.imageViewBasketball.setOnClickListener{
+            if (modoTablet){
+                (activity as MainActivity).openBasektBallFragment()
+
+            } else
+            findNavController().navigate(R.id.action_sportSelectorFragment3_to_basketBallFragment)
+        }
+
         // Inflate the layout for this fragment
         return  binding.root
     }
@@ -55,11 +73,11 @@ class SportSelectorFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(modoTablet: Boolean) =
             SportSelectorFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putBoolean(ARG_PARAM1, modoTablet)
+
                 }
             }
     }
