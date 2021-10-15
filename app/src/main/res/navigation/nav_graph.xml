@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/sportSelectorFragment3">
+    <fragment
+        android:id="@+id/sportSelectorFragment3"
+        android:name="com.delnortedevs.deportesviewmodel.SportSelectorFragment"
+        android:label="fragment_sport_selector"
+        tools:layout="@layout/fragment_sport_selector" >
+        <action
+            android:id="@+id/action_sportSelectorFragment3_to_soccerFragment"
+            app:destination="@id/soccerFragment" />
+        <action
+            android:id="@+id/action_sportSelectorFragment3_to_basketBallFragment"
+            app:destination="@id/basketBallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/soccerFragment"
+        android:name="com.delnortedevs.deportesviewmodel.SoccerFragment"
+        android:label="fragment_soccer"
+        tools:layout="@layout/fragment_soccer" />
+    <fragment
+        android:id="@+id/basketBallFragment"
+        android:name="com.delnortedevs.deportesviewmodel.BasketBallFragment"
+        android:label="fragment_basket_ball"
+        tools:layout="@layout/fragment_basket_ball" />
+</navigation>
