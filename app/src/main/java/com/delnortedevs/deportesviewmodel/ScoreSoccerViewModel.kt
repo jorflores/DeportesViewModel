@@ -1,6 +1,8 @@
 package com.delnortedevs.sportkotlin
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ScoreSoccerViewModel : ViewModel()  {
@@ -9,24 +11,25 @@ class ScoreSoccerViewModel : ViewModel()  {
         Log.d("ScoreViewModel", "ScoreViewModel created!")
     }
 
-    private var _scoreTeamA = 0
-    private var _scoreTeamB = 0
+    private val _scoreTeamA  = MutableLiveData(0)
+    private var _scoreTeamB = MutableLiveData(0)
 
-    val scoreTeamA get() = _scoreTeamA
-    val scoreTeamB get() = _scoreTeamB
+    val scoreTeamA : LiveData<Int>   = _scoreTeamA
+    val scoreTeamB : LiveData<Int>  = _scoreTeamB
 
-    fun addScoreA(points : Int) {
-        _scoreTeamA+= points
+    fun addScoreA() {
+        _scoreTeamA.value =   scoreTeamA.value?.plus(1)
+
     }
 
-    fun addScoreB(points : Int) {
-        _scoreTeamB+= points
+    fun addScoreB() {
+        _scoreTeamB.value = scoreTeamB.value?.plus(1)
     }
 
 
     fun resetScores(){
-        _scoreTeamA = 0
-        _scoreTeamB = 0
+        _scoreTeamA.value = 0
+        _scoreTeamB.value = 0
     }
 
     override fun onCleared() {

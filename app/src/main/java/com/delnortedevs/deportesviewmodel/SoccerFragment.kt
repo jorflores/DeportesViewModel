@@ -40,6 +40,12 @@ class SoccerFragment : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.scoreTeamA.observe(viewLifecycleOwner,{newscore -> binding.teamAScore.text = newscore.toString() })
+        viewModel.scoreTeamB.observe(viewLifecycleOwner,{newscore -> binding.teamBScore.text = newscore.toString() })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,31 +53,20 @@ class SoccerFragment : Fragment() {
 
         _binding  = FragmentSoccerBinding.inflate(inflater,container,false)
 
-        showScores()
-
         binding.teamA1.setOnClickListener{
-            viewModel.addScoreA(1)
-            binding.teamAScore.text = viewModel.scoreTeamA.toString()
+            viewModel.addScoreA()
         }
 
         binding.teamB1.setOnClickListener{
-            viewModel.addScoreB(1)
-            binding.teamBScore.text = viewModel.scoreTeamB.toString()
+            viewModel.addScoreB()
         }
 
         binding.teamReset.setOnClickListener{
             viewModel.resetScores()
-            showScores()
         }
-
 
         // Inflate the layout for this fragment
         return binding.root
-    }
-
-    private fun showScores() {
-        binding.teamAScore.text = viewModel.scoreTeamA.toString()
-        binding.teamBScore.text = viewModel.scoreTeamB.toString()
     }
 
 
